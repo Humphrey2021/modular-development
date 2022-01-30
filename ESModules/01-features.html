@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES Module - 模块的特性</title>
+</head>
+<body>
+    <!-- 通过给 script 添加 type = module 的属性，就可以以 ES Module 的标准执行其中的 JS 代码了 -->
+    <script type="module">
+        console.log('this is es module')
+    </script>
+    <!-- 1. ES Module 自动采用严格模式，忽略了 'use strict' -->
+    <script>console.log(this)</script> <!-- 打印了 window 对象 -->>
+    <script type="module">console.log(this)</script> <!-- undefined -->>
+    <!-- 2. 每个 ES Module 都是运行在单独的私有作用域 -->
+    <script type="module">
+        var foo = 100
+        console.log(foo) // 100
+    </script>
+    <script type="module">
+        console.log(foo) // 报错 ReferenceError: foo is node defined
+    </script>
+    <!-- 3. ES Module 是通过 CORS 的方式请求外部 JS 模块 -->
+    <!-- 这一种会报错，因为这个地址是不支持 CORS 的 -->
+    <!-- <script type="module" src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+    <!-- 这种支持 CORS 的，这个请求就会是正常的请求 -->
+    <script type="module" src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    <!-- 3. ES Module 的 script 标签会延迟执行脚本 -->
+    <!-- <script src="xxx.js"></script> --> <!-- 内部代码 alert('123') : 这种阻碍页面的加载-->
+    <script type="module" src="xxx.js"></script> <!-- 内部代码 alert('123') : 这种会等到页面渲染完成以后再打印-->
+    <script defer src="xxx.js"></script> <!-- 显示效果是一样的 -->
+    <p>需要显示的内容</p>
+</body>
+</html>
