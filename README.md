@@ -34,3 +34,60 @@
 具体做法就是在第三阶段的基础上，利用立即执行函数的参数传递模块依赖项。
 
 这使得每一个模块之间的关系变得更加明显。
+
+### 阶段五
+出现了`CommonJs`，但这个规范是为`node`实现的。它是以同步的方式加载模块，所以在`node`中没有问题，但是在浏览器端可能就会出现问题
+- 一个文件就是一个模块
+- 每个模块都有单独的作用域
+- 通过 module.exports 导出成员
+- 通过 require 函数载入模块
+
+接着就出了专门为浏览器设置的规范
+> AMD(Asynchronous Module Definition) 异步的模块定义规范
+
+主要实现是Require.js
+```js
+// 为当前模块提供私有空间
+define('module1', ['jqurey', './module2'], function($, module2) {
+    // 使用return向外部导出一些成员
+    return {
+        start: function () {
+            $('body').animate({ margin: '200px' })
+            module2()
+        }
+    }
+})
+
+// 载入一个模块
+require(['./module1'], function (module1) {
+    module1.start()
+})
+```
+目前绝大多数第三方库都支持`AMD`规范，生态很完善，但依然会有相应的问题
+- AMD使用起来相对复杂
+- 模块JS文件请求频繁，导致页面效率低下
+
+`requireJs`的出现为前端的模块化提供了一个标准
+
+随后淘宝推出了 Sea.js + CMD (common module definition)
+```js
+// CMD 规范（类似 CommonJS 规范）
+define(function (require, exprots, module) {
+    var $ = require('jqurey')
+    // 通过 exports 或者 module.exports 对外暴露成员
+    module.exports = function () {
+        console.log('module 2')
+        $('body').append('<p>module2</p>')
+    }
+})
+```
+
+一切技术都是为了解决问题而出现的，在这个过程中，肯定是一步步完善，上面说的都是历史了，目前模块化的标准规范已经趋于成熟。
+
+## 模块化标准规范 （模块化的最佳实践）
+
+node 中使用 CommonJS
+
+在浏览器中一般使用 ES Modules（最主流的前端模块化规范）
+
+### ES Modules
