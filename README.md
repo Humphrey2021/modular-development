@@ -98,3 +98,46 @@ node 中使用 CommonJS
 - 每个`ESM`模块都是单独的私有作用域
 - `ESM`是通过`COES`其请求外部`JS`模块的
 - `ESM`的`script`标签会延迟执行脚本
+
+#### 导入和导出
+
+##### 导出
+
+###### 方式一：每一个需要导出的数据前加 export
+```js
+export var name = 'foo module'
+export function hello () {
+    console.log('hello')
+}
+export class Person {}
+```
+###### 方式二：在末尾统一导出
+```js
+var name = 'foo module'
+function hello() {
+    console.log('hello')
+}
+class Person { }
+// 普通导出
+export { name, hello, Person }
+// 设置别名导出
+export {
+    name as fooName, // 可以通过 as 进行重命名，在接收的时候也需要写成对应的别名
+    hello as fooHello,
+    Person
+}
+// 设置默认导出某一项
+export {
+    name as default, // 默认导出
+    hello,
+    Person
+}
+// 针对这种导出，在引入的时候需要使用将default设置别名的方式获取
+import { default as fooname } from 'module.js'
+// 默认导出
+export default name
+// 针对这种导出，在引入的时候，可以直接设置别名导入
+import xxx form 'module.js'
+```
+
+##### 导入
