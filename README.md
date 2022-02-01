@@ -1,3 +1,5 @@
+<!-- const BLOGURL = https://github.com/Humphrey2021/modular-development/blob/main -->
+
 # 模块化开发
 
 模块化开发，是前端当下最重要的开发范式之一；模块化三个字其实只是一个思想
@@ -142,5 +144,4 @@ import xxx from 'module.js'
 
 ##### 导入
 
-具体内容请看 [点击跳转](`./02-ESModules/03-import/app.js`)
-[点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/02-ESModules/03-import/app.js)
+具体内容请看 [点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/02-ESModules/03-import/app.js)
