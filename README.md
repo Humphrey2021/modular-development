@@ -137,8 +137,44 @@ import { default as fooname } from 'module.js'
 // 默认导出
 export default name
 // 针对这种导出，在引入的时候，可以直接设置别名导入
-import xxx form 'module.js'
+import xxx from 'module.js'
 ```
 
 ##### 导入
+```js
+import { name } from './module.js'
+// 对于import...from后面跟的必须是一个字符串，同时是一个完整的文件路径及名称，不可以省略扩展名
+// 对于路径当中的index同样不可以省略
+// 但是使用了打包工具后，是可以省略的
+// 如果是相对路径，同样不可以省略前面的 ./
+import { name } from 'http://localhost:8080/xxx/xxx.js'
+import {} from './module.js'
+// 相等
+import './module.js'
+
+import * as module from './module.js'
+console.log(module)
+
+// var modulePath = './module.js'
+// import { name } from modulePath // 这是错误的
+// if (true) {
+//     import { name } from './module.js' // 这同样是错误的
+// }
+// import 只能出现在最顶层
+// 如何动态导入模块
+// 可以使用import函数
+import('./module.js').then(function (module) {
+    console.log(module)
+})
+
+// 如果模块中导出的成员不只是普通成员还有默认成员 default
+// 在导入的时候有两种方式可以都获取到
+// 方式一：
+import { name, age, default as title } from './module.js'
+console.log( name, age, title )
+// 方式二：
+import title, { name, age } from './module.js'
+console.log(name, age, title)
+```
+<!-- 对于improt -->
 
