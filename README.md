@@ -145,3 +145,9 @@ import xxx from 'module.js'
 ##### 导入
 
 具体内容请看 [点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/02-ESModules/03-import/app.js)
+
+##### 导出导入成员
+`import`和`export`组合使用
+
+具体内容请看 [点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/02-ESModules/04-export-import/app.js)
+
