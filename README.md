@@ -151,3 +151,20 @@ import xxx from 'module.js'
 
 具体内容请看 [点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/02-ESModules/04-export-import/app.js)
 
+##### ES Modules in Browser
+`Polyfill`兼容方案
+
+es modules是在2014年提出来的，在早期的浏览器当中，并不支持这种特性
+所以在使用 es modules 的时候，还是要考虑兼容性的问题
+虽然在正常的开发中，都有构建工具可以将es6转换为es5，从而实现浏览器的兼容问题，但这里我们要说的是另外一种方案`Polyfill`
+
+这个模块的名称叫做[`ES Module Loader`](https://github.com/ModuleLoader/browser-es-module-loader)
+它其实就是一个`js`的文件，只需要将其引入到项目当中就可以了
+我们可以通过[`unpkg`](https://unpkg.com/browser-es-module-loader)所提供的`CDN`服务,去拿到它的所有js文件。
+
+具体实现请看 [点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/02-ESModules/05-polyfill/index.html)
+
+这种模式仅作为了解，在实际生产中使用这种方式，效率是比较低下的。
+
+#### ES Module in node
+`node`版本需要大于`8.5`
