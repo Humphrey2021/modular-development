@@ -198,3 +198,7 @@ const wrapper = [
     '\n})'
 ]
 ```
+
+进一步支持 ES Module
+
+在`package.json`中添加`type`字段，值写为`module`，则可以将后缀`.mjs`修改为`.js`了
