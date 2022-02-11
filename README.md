@@ -201,4 +201,9 @@ const wrapper = [
 
 进一步支持 ES Module
 
-在`package.json`中添加`type`字段，值写为`module`，则可以将后缀`.mjs`修改为`.js`了
+在`package.json`中添加`type`字段，值写为`module`，就可以将后缀`.mjs`修改为`.js`
+如果需要在`type=module`的情况下继续使用`CommonJS`，需要将文件扩展名修改为`.cjs`
+
+Babel兼容方案
+具体实现请看 [点击跳转](https://github.com/Humphrey2021/modular-development/blob/main/03-es-module-in-node/05-babel)
+
