@@ -181,3 +181,20 @@ tips: 启用最新的实验模块功能（已弃用）
 - CommonJS 中不能导入 ES Modules 模块
 - CommonJS 始终只会导出一个默认成员
 - 注意 Import 不是解构导出对象
+
+与CommonJS模块的差异
+
+在nodejs中，CommonJS代码最终传入了这个函数,
+在外侧包裹一个函数,
+从而实现私有模块作用域.
+
+```js
+// nodejs 源码中的一段
+let wrap = function (script) {
+    return Module.wrapper[0] + script + Module.wrapper[1]
+}
+const wrapper = [
+    '(function (exports, require, module, __filename, __dirname) {',
+    '\n})'
+]
+```
