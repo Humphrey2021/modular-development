@@ -168,3 +168,16 @@ es modules是在2014年提出来的，在早期的浏览器当中，并不支持
 
 #### ES Module in node
 `node`版本需要大于`8.5`
+如果要在node中使用esmodule，需要做两件事情
+1. 将文件的拓展名修改为`.mjs`
+2. 启动node的时候需要添加一个`--experimental-modules`参数
+这代表着启用一个esmodule的实验特性
+```shell
+node --experimental-modules index.mjs
+```
+tips: 启用最新的实验模块功能（已弃用）
+
+- ES Modules 中可以导入 CommonJS 模块
+- CommonJS 中不能导入 ES Modules 模块
+- CommonJS 始终只会导出一个默认成员
+- 注意 Import 不是解构导出对象
